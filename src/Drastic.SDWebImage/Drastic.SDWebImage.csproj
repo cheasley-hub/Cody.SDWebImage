@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-ios;net7.0-maccatalyst;net7.0-tvos;net7.0-macos</TargetFrameworks>
+		<TargetFrameworks>net8.0-ios;net8.0-maccatalyst;net8.0-tvos;net8.0-macos</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>true</ImplicitUsings>
 		<IsBindingProject>true</IsBindingProject>
@@ -9,16 +9,16 @@
 		<Description>Drastic.SDWebImage is binding of SDWebImage, a library which provides an async image downloader with cache support.</Description>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-macos'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-macos'">
  		<DefineConstants>$(DefineConstants);MACOS</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">
  		<DefineConstants>$(DefineConstants);IOS</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-tvos'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-tvos'">
  		<DefineConstants>$(DefineConstants);TVOS</DefineConstants>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
  		<DefineConstants>$(DefineConstants);IOS</DefineConstants>
 	</PropertyGroup>
 	<ItemGroup>

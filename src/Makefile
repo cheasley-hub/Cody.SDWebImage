@@ -1,4 +1,4 @@
-XBUILD=/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild
+XBUILD=xcodebuild
 ROOT=$(PWD)
 PROJECT_ROOT=$(ROOT)/../external/SDWebImage
 PROJECT=$(PROJECT_ROOT)/SDWebImage.xcodeproj
@@ -15,8 +15,8 @@ FRAMEWORKS=$(ROOT)/Frameworks
 FRAMEWORKS_IOS=$(ROOT)/Frameworks/ios
 FRAMEWORKS_MAC=$(ROOT)/Frameworks/mac
 FRAMEWORKS_TVOS=$(ROOT)/Frameworks/tvos
-IOS_SDK=iphoneos16.1
-MAC_SDK=macosx13.0
+IOS_SDK=iphoneos18.0
+MAC_SDK=macosx15.0
 
 all: iossimulator iosdevice maccatalyst tvossimulator tvosdevice mac xcframework dotnet
 
