@@ -22,93 +22,6 @@ namespace Drastic.SDWebImage
 	// typedef void (^SDWebImageNoParamsBlock)();
 	delegate void SDWebImageNoParamsHandler ();
 
-#if IOS
-	// @interface FLAnimatedImageView : UIImageView
-	[BaseType (typeof (UIImageView))]
-	interface FLAnimatedImageView
-	{
-		// @property (nonatomic, strong) FLAnimatedImage * animatedImage;
-		[Export ("animatedImage", ArgumentSemantic.Strong)]
-		FLAnimatedImage AnimatedImage { get; set; }
-
-		// @property (copy, nonatomic) void (^loopCompletionBlock)(NSUInteger);
-		[Export ("loopCompletionBlock", ArgumentSemantic.Copy)]
-		Action<nuint> LoopCompletionBlock { get; set; }
-
-		// @property (readonly, nonatomic, strong) UIImage * currentFrame;
-		[Export ("currentFrame", ArgumentSemantic.Strong)]
-		UIImage CurrentFrame { get; }
-
-		// @property (readonly, assign, nonatomic) NSUInteger currentFrameIndex;
-		[Export ("currentFrameIndex")]
-		nuint CurrentFrameIndex { get; }
-
-		// @property (copy, nonatomic) NSString * runLoopMode;
-		[Export ("runLoopMode")]
-		string RunLoopMode { get; set; }
-	}
-
-	// @interface FLAnimatedImage : NSObject
-	[BaseType (typeof (NSObject))]
-	interface FLAnimatedImage
-	{
-		// @property (readonly, nonatomic, strong) UIImage * posterImage;
-		[Export ("posterImage", ArgumentSemantic.Strong)]
-		UIImage PosterImage { get; }
-
-		// @property (readonly, assign, nonatomic) CGSize size;
-		[Export ("size", ArgumentSemantic.Assign)]
-		CGSize Size { get; }
-
-		// @property (readonly, assign, nonatomic) NSUInteger loopCount;
-		[Export ("loopCount")]
-		nuint LoopCount { get; }
-
-		// @property (readonly, nonatomic, strong) NSDictionary * delayTimesForIndexes;
-		[Export ("delayTimesForIndexes", ArgumentSemantic.Strong)]
-		NSDictionary DelayTimesForIndexes { get; }
-
-		// @property (readonly, assign, nonatomic) NSUInteger frameCount;
-		[Export ("frameCount")]
-		nuint FrameCount { get; }
-
-		// @property (readonly, assign, nonatomic) NSUInteger frameCacheSizeCurrent;
-		[Export ("frameCacheSizeCurrent")]
-		nuint FrameCacheSizeCurrent { get; }
-
-		// @property (assign, nonatomic) NSUInteger frameCacheSizeMax;
-		[Export ("frameCacheSizeMax")]
-		nuint FrameCacheSizeMax { get; set; }
-
-		// -(UIImage *)imageLazilyCachedAtIndex:(NSUInteger)index;
-		[Export ("imageLazilyCachedAtIndex:")]
-		UIImage ImageLazilyCached (nuint index);
-
-		// +(CGSize)sizeForImage:(id)image;
-		[Static]
-		[Export ("sizeForImage:")]
-		CGSize SizeForImage (NSObject image);
-
-		// -(instancetype)initWithAnimatedGIFData:(NSData *)data;
-		[Export ("initWithAnimatedGIFData:")]
-		IntPtr Constructor (NSData data);
-
-		// -(instancetype)initWithAnimatedGIFData:(NSData *)data optimalFrameCacheSize:(NSUInteger)optimalFrameCacheSize predrawingEnabled:(BOOL)isPredrawingEnabled __attribute__((objc_designated_initializer));
-		[Export ("initWithAnimatedGIFData:optimalFrameCacheSize:predrawingEnabled:")]
-		[DesignatedInitializer]
-		IntPtr Constructor (NSData data, nuint optimalFrameCacheSize, bool isPredrawingEnabled);
-
-		// +(instancetype)animatedImageWithGIFData:(NSData *)data;
-		[Static]
-		[Export ("animatedImageWithGIFData:")]
-		FLAnimatedImage CreateAnimatedImage (NSData data);
-
-		// @property (readonly, nonatomic, strong) NSData * data;
-		[Export ("data", ArgumentSemantic.Strong)]
-		NSData Data { get; }
-	}
-#endif
-
 interface ISDWebImageOperation { }
 
 	// @protocol SDWebImageOperation <NSObject>
@@ -453,42 +366,6 @@ interface ISDWebImageOperation { }
 		[return: NullAllowed]
 		string GetCacheKey ([NullAllowed] NSUrl url);
 	}
-
-#if IOS
-	// @interface WebCache (FLAnimatedImageView)
-	[Category]
-	[BaseType (typeof (FLAnimatedImageView))]
-	interface FLAnimatedImageView_WebCache
-	{
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url;
-		[Export ("sd_setImageWithURL:")]
-		void SetImage ([NullAllowed] NSUrl url);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url placeholderImage:(UIImage * _Nullable)placeholder;
-		[Export ("sd_setImageWithURL:placeholderImage:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] UIImage placeholder);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url placeholderImage:(UIImage * _Nullable)placeholder options:(SDWebImageOptions)options;
-		[Export ("sd_setImageWithURL:placeholderImage:options:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] UIImage placeholder, SDWebImageOptions options);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url completed:(SDExternalCompletionBlock _Nullable)completedBlock;
-		[Export ("sd_setImageWithURL:completed:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] SDExternalCompletionHandler completedHandler);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url placeholderImage:(UIImage * _Nullable)placeholder completed:(SDExternalCompletionBlock _Nullable)completedBlock;
-		[Export ("sd_setImageWithURL:placeholderImage:completed:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] UIImage placeholder, [NullAllowed] SDExternalCompletionHandler completedHandler);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url placeholderImage:(UIImage * _Nullable)placeholder options:(SDWebImageOptions)options completed:(SDExternalCompletionBlock _Nullable)completedBlock;
-		[Export ("sd_setImageWithURL:placeholderImage:options:completed:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] UIImage placeholder, SDWebImageOptions options, [NullAllowed] SDExternalCompletionHandler completedHandler);
-
-		// -(void)sd_setImageWithURL:(NSURL * _Nullable)url placeholderImage:(UIImage * _Nullable)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock _Nullable)progressBlock completed:(SDExternalCompletionBlock _Nullable)completedBlock;
-		[Export ("sd_setImageWithURL:placeholderImage:options:progress:completed:")]
-		void SetImage ([NullAllowed] NSUrl url, [NullAllowed] UIImage placeholder, SDWebImageOptions options, [NullAllowed] SDWebImageDownloaderProgressHandler progressHandler, [NullAllowed] SDExternalCompletionHandler completedHandler);
-	}
-#endif
 
 	// @interface ImageContentType (NSData)
 	[Category]
