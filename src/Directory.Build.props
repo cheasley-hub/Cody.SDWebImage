@@ -3,28 +3,23 @@
         <LangVersion>preview</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>1.0.7</Version>
-        <Company>Drastic Actions</Company>
-        <Copyright>Copyright (C) Drastic Actions</Copyright>
-        <IsPackable>false</IsPackable>
+        <Company>Cody Heasley</Company>
+        <Copyright>Copyright © 2025 Cody Heasley (fork) - original © Drastic Actions</Copyright>
     </PropertyGroup>
     <ItemGroup>
       <None Include="../../README.md" Pack="true" PackagePath="" Visible="false" />
-      <None Include="../../favicon.png" Pack="true" PackagePath="" Visible="false" />
     </ItemGroup>
 
     <PropertyGroup>
     <Authors>$(Company)</Authors>
-      <PackageTags>SDWebImage images uikit ios mac catalyst tvos</PackageTags>
-      <PackageProjectUrl>https://github.com/drasticactions/Drastic.SDWebImage</PackageProjectUrl>
-      <PackageReleaseNotes>https://github.com/drasticactions/Drastic.SDWebImage/blob/main/CHANGELOG.md</PackageReleaseNotes>
+      <PackageTags>SDWebImage images uikit ios</PackageTags>
+      <PackageProjectUrl>https://github.com/cheasley-hub/Cody.SDWebImage</PackageProjectUrl>
+      <PackageReleaseNotes>https://github.com/cheasley-hub/Cody.SDWebImage/blob/main/CHANGELOG.md</PackageReleaseNotes>
       <PackageReadmeFile>README.md</PackageReadmeFile>
-      <PackageIcon>favicon.png</PackageIcon>
       <PackageLicenseExpression>MIT</PackageLicenseExpression>
       <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
       <PublishRepositoryUrl>true</PublishRepositoryUrl>
       <EmbedUntrackedSources>true</EmbedUntrackedSources>
       <DebugType>embedded</DebugType>
     </PropertyGroup>
-
 </Project>
